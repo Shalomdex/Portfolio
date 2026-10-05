@@ -14,19 +14,20 @@
         }
         section { scroll-margin-top: 4rem; }
         
-        /* Custom Animations for Icons */
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+        /* Linear Motion Animation for Icons */
+        @keyframes scrollLinear {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Scrolls exactly half the duplicated width */
         }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        .animate-linear-scroll {
+            display: flex;
+            width: max-content;
+            animation: scrollLinear 25s linear infinite;
         }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        .delay-400 { animation-delay: 400ms; }
+        /* Pause animation on hover */
+        .animate-linear-scroll:hover {
+            animation-play-state: paused;
+        }
 
         /* Hide scrollbar for the horizontal proof section */
         .no-scrollbar::-webkit-scrollbar {
@@ -40,19 +41,17 @@
         /* Accordion marker styling */
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
-    </details>
     </style>
 </head>
-<body class="min-h-screen antialiased selection:bg-white/20">
+<body class="min-h-screen antialiased selection:bg-white/20 overflow-x-hidden">
 
-    <!-- Navigation: Links grouped closer to Contact Button -->
+    <!-- Navigation -->
     <header class="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between sticky top-0 bg-[#0c0c0e]/90 backdrop-blur-md z-50">
         <div class="flex items-center gap-3">
             <img src="profile.jpg" alt="Adejobi Shalom" class="w-8 h-8 rounded-full object-cover border border-white/10" onerror="this.src='https://ui-avatars.com/api/?name=Adejobi+Shalom&background=18181b&color=fff'">
             <span class="font-medium text-sm tracking-wide">Adejobi Shalom</span>
         </div>
         
-        <!-- Grouped Nav and Contact -->
         <div class="flex items-center gap-6">
             <nav class="hidden md:flex items-center gap-6 text-sm text-[#a1a1aa]">
                 <a href="#tools" class="hover:text-white transition-colors">Skills</a>
@@ -69,7 +68,7 @@
 
     <!-- Hero Section -->
     <main class="max-w-7xl mx-auto px-6 pt-12 md:pt-16 pb-20 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        <div class="lg:col-span-7 flex flex-col items-start">
+        <div class="lg:col-span-7 flex flex-col items-start overflow-hidden">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#18181b] border border-white/5 text-xs text-[#a1a1aa] mb-8">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Available for work &middot; Remote, contract or full-time</span>
@@ -79,8 +78,9 @@
                 Data<br>Scientist.
             </h1>
 
+            <!-- Descriptive Bio Based on CV -->
             <p class="text-[#a1a1aa] text-lg leading-relaxed max-w-xl mb-10">
-                Detail-oriented data professional building predictive models, database architectures, and automated ETL workflows. Passionate about using actionable insights to solve real-world problems and drive measurable impact through evidence-based decisions.
+                I am a Data Analyst and Machine Learning Engineer with over three years of hands-on experience spanning financial analysis, public sector data analytics, and machine learning[cite: 8]. Currently graduating with a First Class Honours in Computer Science, I specialize in engineering automated ETL pipelines, building predictive models, and deploying interactive dashboard interfaces[cite: 8, 10]. I am passionate about transforming complex datasets into actionable insights, managing the full data lifecycle from financial reconciliation through to feature engineering and production-ready ML solutions[cite: 8].
             </p>
 
             <div class="flex flex-wrap items-center gap-4 mb-14">
@@ -93,23 +93,40 @@
                 </a>
             </div>
 
-            <!-- Animated Tech Stack Dock (14 Icons) -->
-            <div class="flex flex-wrap items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float" title="Python"><span class="text-xs font-bold text-[#3776AB]">Py</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-100" title="SQL"><span class="text-xs font-bold text-[#F29111]">SQL</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-200" title="Pandas"><span class="text-xs font-bold text-white">Pd</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-300" title="NumPy"><span class="text-xs font-bold text-[#4DABCF]">Nu</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-400" title="Scikit-Learn"><span class="text-xs font-bold text-[#F7931E]">Sk</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float" title="Excel"><span class="text-xs font-bold text-[#217346]">XL</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-100" title="Power BI"><span class="text-xs font-bold text-[#F2C811]">BI</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-200" title="JavaScript"><span class="text-xs font-bold text-[#F7DF1E]">JS</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-300" title="HTML"><span class="text-xs font-bold text-[#E34F26]">&lt;/&gt;</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-400" title="CSS"><span class="text-xs font-bold text-[#1572B6]">#</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float" title="Jupyter"><span class="text-xs font-bold text-[#F37626]">Jp</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-100" title="Colab"><span class="text-xs font-bold text-[#F9AB00]">Co</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-200" title="Git"><span class="text-xs font-bold text-[#F05032]">Git</span></div>
-                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-300" title="Machine Learning">
-                    <svg class="w-5 h-5 text-[#38bdf8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+            <!-- Animated Linear Motion Tech Dock -->
+            <div class="w-full relative overflow-hidden mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+                <div class="animate-linear-scroll flex gap-4 py-2">
+                    <!-- First Set of Real Icons -->
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Python" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="SQL" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Pandas" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="NumPy" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Scikit-Learn" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachespark/apachespark-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Apache Spark" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Kafka" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Kubernetes" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Docker" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Jupyter" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="JavaScript" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="HTML5" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="CSS3" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Git" />
+                    
+                    <!-- Duplicated Set for Seamless Looping -->
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Python" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="SQL" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Pandas" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="NumPy" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Scikit-Learn" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachespark/apachespark-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Apache Spark" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Kafka" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Kubernetes" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Docker" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Jupyter" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="JavaScript" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="HTML5" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="CSS3" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" class="w-10 h-10 rounded-xl bg-[#18181b] p-2 border border-white/5" title="Git" />
                 </div>
             </div>
         </div>
@@ -122,30 +139,25 @@
         </div>
     </main>
 
-    <!-- Tools Section -->
+    <!-- Tools Section Grid (Updated Icons) -->
     <section id="tools" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
         <h2 class="text-3xl font-semibold mb-2">Tools I build with</h2>
         <p class="text-[#a1a1aa] mb-12">The core stack driving my data workflows and analysis.</p>
         
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-            <!-- 14 Tools Grid -->
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#3776AB]">Py</span><span class="text-xs text-[#a1a1aa]">Python</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F29111]">SQL</span><span class="text-xs text-[#a1a1aa]">SQL</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-white">Pd</span><span class="text-xs text-[#a1a1aa]">Pandas</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#4DABCF]">Nu</span><span class="text-xs text-[#a1a1aa]">NumPy</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F7931E]">Sk</span><span class="text-xs text-[#a1a1aa]">Scikit-Learn</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#217346]">XL</span><span class="text-xs text-[#a1a1aa]">Adv. Excel</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F2C811]">BI</span><span class="text-xs text-[#a1a1aa]">Power BI</span></div>
-            
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F37626]">Jp</span><span class="text-xs text-[#a1a1aa]">Jupyter Lab</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F9AB00]">Co</span><span class="text-xs text-[#a1a1aa]">Google Colab</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F05032]">Git</span><span class="text-xs text-[#a1a1aa]">Git / GitHub</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F7DF1E]">JS</span><span class="text-xs text-[#a1a1aa]">JavaScript</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#E34F26]">&lt;&gt;</span><span class="text-xs text-[#a1a1aa]">HTML/CSS</span></div>
-            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition">
-                <svg class="w-8 h-8 text-[#38bdf8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4"></path></svg>
-                <span class="text-xs text-[#a1a1aa]">Databases</span>
-            </div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">Python</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">SQL</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">Pandas</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">NumPy</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">Scikit-Learn</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachespark/apachespark-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">Apache Spark</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">Kafka</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">Kubernetes</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">Docker</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">Jupyter</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">JavaScript</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">HTML/CSS</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" class="w-10 h-10" /><span class="text-xs text-[#a1a1aa]">Git / GitHub</span></div>
             <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition">
                 <svg class="w-8 h-8 text-[#e11d48]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v8l9-11h-7z"></path></svg>
                 <span class="text-xs text-[#a1a1aa]">ETL Pipelines</span>
@@ -153,7 +165,7 @@
         </div>
     </section>
 
-    <!-- Projects Section (Modeled after image_07bbd3.png)[cite: 5] -->
+    <!-- Projects Section -->
     <section id="projects" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
         <div class="text-center mb-16">
             <h2 class="text-4xl font-semibold mb-4">Projects I've shipped</h2>
@@ -161,8 +173,6 @@
         </div>
         
         <div class="grid md:grid-cols-2 gap-8">
-            
-            <!-- Project 1 -->
             <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
                 <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?fit=crop&w=800&q=80" alt="E-Library" class="absolute inset-0 w-full h-full object-cover opacity-50">
@@ -185,7 +195,6 @@
                 </div>
             </div>
 
-            <!-- Project 2 -->
             <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
                 <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?fit=crop&w=800&q=80" alt="Fraud Detection" class="absolute inset-0 w-full h-full object-cover opacity-50">
@@ -207,7 +216,6 @@
                 </div>
             </div>
 
-            <!-- Project 3 -->
             <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
                 <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?fit=crop&w=800&q=80" alt="Real Estate" class="absolute inset-0 w-full h-full object-cover opacity-50">
@@ -229,7 +237,6 @@
                 </div>
             </div>
 
-            <!-- Project 4 -->
             <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
                 <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?fit=crop&w=800&q=80" alt="Rainfall" class="absolute inset-0 w-full h-full object-cover opacity-50">
@@ -250,55 +257,10 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Project 5 -->
-            <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
-                <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?fit=crop&w=800&q=80" alt="Customer Churn" class="absolute inset-0 w-full h-full object-cover opacity-50">
-                </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-medium mb-2">Customer Churn Prediction</h3>
-                    <p class="text-sm text-[#a1a1aa] mb-6">Business Intelligence Solutions</p>
-                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-8 flex-grow">
-                        A Lucrative business-focused predictive pipeline analyzing user retention metrics to forecast churn probability, enabling proactive marketing interventions and revenue preservation for SaaS platforms.
-                    </p>
-                    <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-emerald-500 mb-6">
-                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Churn Analysis</span>
-                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Revenue Impact</span>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-white/5 pt-6 mt-auto">
-                        <span class="text-xs text-[#a1a1aa]">Power BI &middot; Logistic Regression</span>
-                        <a href="#" class="px-4 py-2 bg-[#27272a] text-white text-xs font-medium rounded-full hover:bg-white/20 transition">Source Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
-                <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?fit=crop&w=800&q=80" alt="Algo Trading" class="absolute inset-0 w-full h-full object-cover opacity-50">
-                </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-medium mb-2">Algorithmic Trading Bot</h3>
-                    <p class="text-sm text-[#a1a1aa] mb-6">Quantitative Finance</p>
-                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-8 flex-grow">
-                        Developed a quantitative trading script capable of analyzing historical market data and executing simulated buy/sell orders based on optimized moving average crossover strategies.
-                    </p>
-                    <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-emerald-500 mb-6">
-                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Time Series Analysis</span>
-                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Automation</span>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-white/5 pt-6 mt-auto">
-                        <span class="text-xs text-[#a1a1aa]">Python &middot; Finance APIs</span>
-                        <a href="#" class="px-4 py-2 bg-[#27272a] text-white text-xs font-medium rounded-full hover:bg-white/20 transition">Source Code</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- Experience Section (Modeled after image_07c02d.png)[cite: 6] -->
+    <!-- Experience Section -->
     <section id="experience" class="max-w-4xl mx-auto px-6 py-20 border-t border-white/5">
         <div class="text-center mb-16">
             <h2 class="text-4xl font-semibold mb-4">Where I've worked</h2>
@@ -306,7 +268,6 @@
         </div>
 
         <div class="space-y-4">
-            <!-- Experience 1 -->
             <details class="group rounded-3xl bg-[#151517] border border-white/5 hover:border-white/20 transition-colors p-6 cursor-pointer" open>
                 <summary class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 outline-none">
                     <div>
@@ -324,11 +285,10 @@
                         <li>Analyze campaign performance metrics using Excel and Python, identifying key trends to improve engagement rates and operational efficiency.</li>
                         <li>Clean, validate, and standardize lead generation data, ensuring high data quality and accuracy for continuous outreach initiatives.</li>
                     </ul>
-                    <p class="text-xs pt-2">Stack: Python, Excel, Data Mining, ETL</p>
+                    <p class="text-xs pt-2">Stack: Python, Data Mining, ETL</p>
                 </div>
             </details>
 
-            <!-- Experience 2 -->
             <details class="group rounded-3xl bg-[#151517] border border-white/5 hover:border-white/20 transition-colors p-6 cursor-pointer">
                 <summary class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 outline-none">
                     <div>
@@ -345,13 +305,11 @@
                         <li>Engineered and deployed custom Python scripts using OOP to automate ETL workflows, significantly reducing manual processing time for public sector datasets.</li>
                         <li>Implemented rigorous data cleaning and validation procedures, ensuring high statistical integrity for state-level financial reporting.</li>
                         <li>Designed and built interactive front-end dashboard interfaces using HTML, CSS, and JavaScript to streamline data dissemination.</li>
-                        <li>Utilized advanced Excel and Pandas functions to cross-verify extracted data tables prior to official statistical publishing.</li>
                     </ul>
-                    <p class="text-xs pt-2">Stack: Python (OOP, Pandas), HTML/CSS/JS, Advanced Excel</p>
+                    <p class="text-xs pt-2">Stack: Python (OOP, Pandas), HTML/CSS/JS</p>
                 </div>
             </details>
 
-            <!-- Experience 3 -->
             <details class="group rounded-3xl bg-[#151517] border border-white/5 hover:border-white/20 transition-colors p-6 cursor-pointer">
                 <summary class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 outline-none">
                     <div>
@@ -381,40 +339,50 @@
         </div>
     </section>
 
-    <!-- Proof / On the Record Section (Modeled after image_07d2d3.png)[cite: 7] -->
+    <!-- Expanded "On the record" Section -->
     <section id="proof" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
         <div class="text-center mb-16">
             <h2 class="text-4xl font-semibold mb-4">On the record</h2>
             <p class="text-[#a1a1aa]">Academic achievements, certifications, and technical proficiencies. Every one is on my CV.</p>
         </div>
 
-        <!-- Horizontal scroll container -->
         <div class="flex overflow-x-auto gap-4 pb-8 no-scrollbar snap-x">
             
             <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
-                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">First Class Honours</strong> in Computer Science, demonstrating exceptional academic performance and technical understanding.</p>
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">CGPA 4.56 / 5.00</strong> graduating with a First Class Honours in Computer Science[cite: 8, 10].</p>
                 <p class="text-xs text-[#52525b]">Chrisland University - 2026</p>
             </div>
 
             <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
-                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">IBM Data Science Professional</strong> Certificate, validating industry-standard competencies in data analysis and ML models.</p>
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Over three years of hands-on experience</strong> spanning financial analysis, public sector data analytics, and machine learning engineering[cite: 8].</p>
+                <p class="text-xs text-[#52525b]">Professional Experience Summary</p>
+            </div>
+
+            <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">IBM Data Science Professional Certificate</strong>, validating industry-standard competencies in data analysis and ML models[cite: 9].</p>
                 <p class="text-xs text-[#52525b]">Coursera - Certified</p>
             </div>
 
             <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
-                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Data Analysis with Python</strong> certification, focusing on advanced Pandas and data wrangling techniques.</p>
-                <p class="text-xs text-[#52525b]">UniAthena</p>
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Architected an Intelligent E-Library System</strong> replacing manual catalogs with NLP-based search and machine learning classification[cite: 9].</p>
+                <p class="text-xs text-[#52525b]">Undergraduate Thesis</p>
             </div>
 
             <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
-                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Professional Membership</strong> in view for both the Nigerian Computer Society (NCS) and CPN.</p>
-                <p class="text-xs text-[#52525b]">NCS & CPN</p>
-            </div>
-
-            <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
-                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Automated ETL Workflows</strong> utilizing Object-Oriented Python to drastically cut manual public sector data processing.</p>
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Engineered custom Python scripts</strong> using OOP to automate ETL workflows, massively reducing manual processing time for public sector datasets[cite: 8].</p>
                 <p class="text-xs text-[#52525b]">Ogun State Bureau of Statistics</p>
             </div>
+
+            <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Analyzed member loan records</strong> and reconciled disbursement data for savings and credit operations since 2022[cite: 8].</p>
+                <p class="text-xs text-[#52525b]">Mount Zion Cooperative</p>
+            </div>
+
+            <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Data Analytics with Python</strong> & HP LIFE Data Analytics certifications, focusing on advanced Pandas and data wrangling techniques[cite: 9, 10].</p>
+                <p class="text-xs text-[#52525b]">UniAthena / HP LIFE</p>
+            </div>
+
         </div>
     </section>
 
@@ -427,9 +395,9 @@
         
         <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
             <!-- Copy Email Button -->
-            <button onclick="navigator.clipboard.writeText('shalomadejobi@gmail.com'); alert('Email address copied to clipboard!');" class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition-colors w-full md:w-auto justify-center">
+            <button onclick="navigator.clipboard.writeText('shalomdex7@gmail.com'); alert('Email address copied to clipboard!');" class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition-colors w-full md:w-auto justify-center">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                shalomadejobi@gmail.com
+                shalomdex7@gmail.com
                 <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Click to copy</span>
             </button>
             
@@ -440,15 +408,21 @@
             </a>
         </div>
 
-        <!-- Social Links -->
-        <div class="flex items-center justify-center gap-6 border-t border-white/5 pt-12">
+        <!-- Social Links (Updated with WhatsApp & Instagram) -->
+        <div class="flex items-center justify-center gap-6 border-t border-white/5 pt-12 flex-wrap">
             <a href="https://github.com/Shalomdex" target="_blank" class="w-12 h-12 rounded-full bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa] hover:text-white hover:border-white/20 transition-all" title="GitHub">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"></path></svg>
             </a>
-            <a href="https://linkedin.com/in/shalom-dex-6318b42a6" target="_blank" class="w-12 h-12 rounded-full bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa] hover:text-white hover:border-white/20 transition-all" title="LinkedIn">
+            <a href="https://linkedin.com/in/adejobi-shalom-6318b42a6" target="_blank" class="w-12 h-12 rounded-full bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa] hover:text-white hover:border-white/20 transition-all" title="LinkedIn">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
-            <a href="mailto:shalomadejobi@gmail.com" class="w-12 h-12 rounded-full bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa] hover:text-white hover:border-white/20 transition-all" title="Email">
+            <a href="https://wa.me/qr/O74GEDOXEXXKXD1" target="_blank" class="w-12 h-12 rounded-full bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa] hover:text-white hover:border-white/20 transition-all" title="WhatsApp">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+            <a href="https://instagram.com/" target="_blank" class="w-12 h-12 rounded-full bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa] hover:text-white hover:border-white/20 transition-all" title="Instagram">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="mailto:shalomdex7@gmail.com" class="w-12 h-12 rounded-full bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa] hover:text-white hover:border-white/20 transition-all" title="Email">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             </a>
         </div>
