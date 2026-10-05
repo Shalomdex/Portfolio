@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Scientist Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0e0e10; }
+    </style>
+</head>
+<body class="text-neutral-200 selection:bg-neutral-700 min-h-screen">
+
+    <!-- Navigation -->
+    <header class="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <img src="profile.jpg" alt="Profile" class="w-8 h-8 rounded-full object-cover border border-neutral-700">
+            <span class="font-medium text-white tracking-wide text-sm">Your Name</span>
+        </div>
+        <nav class="flex items-center gap-8 text-sm text-neutral-400">
+            <a href="#work" class="hover:text-white transition">Work</a>
+            <a href="#contact" class="bg-white text-black px-4 py-2 rounded-full font-medium hover:bg-neutral-200 transition">
+                Contact me &rarr;
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="max-w-6xl mx-auto px-6 py-12 md:py-20 grid md:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column -->
+        <div class="md:col-span-7 flex flex-col gap-6">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-neutral-400 w-fit">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Available for work &middot; Remote, contract or full-time</span>
+            </div>
+
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]">
+                Data Scientist.
+            </h1>
+
+            <p class="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-xl">
+                Building end-to-end predictive modeling pipelines, automated ETL workflows, 
+                and interactive decision dashboards. Specializing in applied machine learning, 
+                semantic retrieval systems, and data-driven solutions.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+                <a href="#work" class="px-6 py-3 rounded-full bg-neutral-900 border border-neutral-800 text-sm font-medium hover:bg-neutral-800 hover:border-neutral-700 transition">
+                    See my work
+                </a>
+                <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition">
+                    Contact me &rarr;
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Column: Hero Image -->
+        <div class="md:col-span-5 relative">
+            <div class="relative aspect-[4/5] w-full rounded-[32px] overflow-hidden border border-neutral-800/80 bg-neutral-900 shadow-2xl">
+                <img src="profile.jpg" alt="Portrait" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
