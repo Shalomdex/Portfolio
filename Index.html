@@ -1,67 +1,224 @@
+To make the buttons truly functional and show that they are working, we need to replace the empty placeholder sections at the bottom with actual content areas. Because the `<html class="scroll-smooth">` tag is already included, clicking the navigation links or the hero buttons will smoothly scroll the page down to these specific sections.
+
+I have populated the **Work** and **Skills** sections with actual cards reflecting your background in predictive modeling, SVM/Random Forest fraud detection, and semantic search integration so that you can see exactly how the links land on real content.
+
+Save this updated code into your `index.html`:
+
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Scientist Portfolio</title>
+    <title>Adejobi Shalom - Data Scientist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0e0e10; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            background-color: #0c0c0e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        /* Offset for fixed headers if you add one later, ensures scroll doesn't hide titles */
+        section { scroll-margin-top: 2rem; }
     </style>
 </head>
-<body class="text-neutral-200 selection:bg-neutral-700 min-h-screen">
+<body class="min-h-screen antialiased selection:bg-white/20">
 
     <!-- Navigation -->
-    <header class="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
+    <header class="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
         <div class="flex items-center gap-3">
-            <img src="profile.jpg" alt="Profile" class="w-8 h-8 rounded-full object-cover border border-neutral-700">
-            <span class="font-medium text-white tracking-wide text-sm">Your Name</span>
+            <img src="profile.jpg" alt="Adejobi Shalom" class="w-8 h-8 rounded-full object-cover border border-white/10">
+            <span class="font-medium text-sm tracking-wide">Adejobi Shalom</span>
         </div>
-        <nav class="flex items-center gap-8 text-sm text-neutral-400">
-            <a href="#work" class="hover:text-white transition">Work</a>
-            <a href="#contact" class="bg-white text-black px-4 py-2 rounded-full font-medium hover:bg-neutral-200 transition">
-                Contact me &rarr;
-            </a>
+        
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-8 text-sm text-[#a1a1aa]">
+            <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+            <a href="#work" class="hover:text-white transition-colors">Work</a>
+            <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+            <a href="#proof" class="hover:text-white transition-colors">Proof</a>
         </nav>
+
+        <!-- Contact Button -->
+        <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
+            Contact me 
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
     </header>
 
     <!-- Hero Section -->
-    <main class="max-w-6xl mx-auto px-6 py-12 md:py-20 grid md:grid-cols-12 gap-12 items-center">
+    <main class="max-w-7xl mx-auto px-6 pt-12 md:pt-20 pb-32 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         
-        <!-- Left Column -->
-        <div class="md:col-span-7 flex flex-col gap-6">
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-neutral-400 w-fit">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <!-- Left Content -->
+        <div class="lg:col-span-7 flex flex-col items-start">
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#18181b] border border-white/5 text-xs text-[#a1a1aa] mb-8">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 <span>Available for work &middot; Remote, contract or full-time</span>
             </div>
 
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]">
-                Data Scientist.
+            <h1 class="text-6xl sm:text-7xl lg:text-[80px] font-semibold tracking-tight leading-[1.05] mb-6">
+                Data<br>Scientist.
             </h1>
 
-            <p class="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-xl">
-                Building end-to-end predictive modeling pipelines, automated ETL workflows, 
-                and interactive decision dashboards. Specializing in applied machine learning, 
-                semantic retrieval systems, and data-driven solutions.
+            <p class="text-[#a1a1aa] text-lg leading-relaxed max-w-xl mb-10">
+                Hi, I'm Adejobi, a data scientist in Nigeria building AI-integrated systems for predictive analytics and decision-making. I take products from database architecture and ETL automation through to deployed machine learning models, working solo or leading a small team.
             </p>
 
-            <div class="flex flex-wrap items-center gap-4 pt-2">
-                <a href="#work" class="px-6 py-3 rounded-full bg-neutral-900 border border-neutral-800 text-sm font-medium hover:bg-neutral-800 hover:border-neutral-700 transition">
+            <div class="flex flex-wrap items-center gap-4 mb-14">
+                <a href="#work" class="px-6 py-3 rounded-full bg-[#18181b] border border-white/5 text-sm font-medium hover:bg-[#27272a] transition-colors">
                     See my work
                 </a>
-                <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition">
-                    Contact me &rarr;
+                <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors">
+                    Contact me 
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
+            </div>
+
+            <!-- Tech Stack Dock -->
+            <div class="flex flex-wrap items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center">
+                    <span class="text-white font-bold text-xs bg-[#3776AB] px-1.5 py-0.5 rounded-sm">Py</span>
+                </div>
+                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center">
+                    <span class="text-white font-bold text-xs bg-[#F29111] px-1.5 py-0.5 rounded-sm">SQL</span>
+                </div>
+                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center text-[#38bdf8]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                </div>
+                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center text-[#3ecf8e]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                </div>
+                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center text-[#e11d48]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v8l9-11h-7z"></path></svg>
+                </div>
+                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center text-[#61dafb]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
             </div>
         </div>
 
-        <!-- Right Column: Hero Image -->
-        <div class="md:col-span-5 relative">
-            <div class="relative aspect-[4/5] w-full rounded-[32px] overflow-hidden border border-neutral-800/80 bg-neutral-900 shadow-2xl">
+        <!-- Right Content (Portrait Image Frame) -->
+        <div class="lg:col-span-5 w-full">
+            <div class="w-full aspect-[4/5] rounded-[32px] overflow-hidden bg-[#18181b]">
                 <img src="profile.jpg" alt="Portrait" class="w-full h-full object-cover">
             </div>
         </div>
-
     </main>
+
+    <!-- CONTENT SECTIONS -->
+    
+    <!-- Skills Section -->
+    <section id="skills" class="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
+        <h2 class="text-3xl font-semibold mb-8">Technical Core</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-6 rounded-2xl bg-[#18181b] border border-white/5">
+                <h3 class="font-medium mb-2">Languages</h3>
+                <p class="text-sm text-[#a1a1aa]">Python, JavaScript, HTML, CSS</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-[#18181b] border border-white/5">
+                <h3 class="font-medium mb-2">Libraries</h3>
+                <p class="text-sm text-[#a1a1aa]">Pandas, NumPy, Scikit-Learn, TfidfVectorizer</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-[#18181b] border border-white/5">
+                <h3 class="font-medium mb-2">Modeling</h3>
+                <p class="text-sm text-[#a1a1aa]">Regression, SVM, Random Forest</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-[#18181b] border border-white/5">
+                <h3 class="font-medium mb-2">Pipelines</h3>
+                <p class="text-sm text-[#a1a1aa]">ETL Automation, Semantic Search</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work/Projects Section -->
+    <section id="work" class="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
+        <h2 class="text-3xl font-semibold mb-8">Selected Work</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            
+            <!-- Project 1 -->
+            <div class="p-8 rounded-3xl bg-[#18181b] border border-white/5 hover:border-white/20 transition-colors">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs text-[#a1a1aa] mb-4">
+                    Machine Learning
+                </div>
+                <h3 class="text-xl font-medium mb-3">Card Fraud Detection System</h3>
+                <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
+                    Designed and deployed a highly accurate classification pipeline utilizing Support Vector Machines (SVM) and Random Forest to identify anomalous transaction patterns and prevent financial fraud.
+                </p>
+                <a href="#" class="text-sm font-medium hover:text-gray-300 transition-colors">View details &rarr;</a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="p-8 rounded-3xl bg-[#18181b] border border-white/5 hover:border-white/20 transition-colors">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs text-[#a1a1aa] mb-4">
+                    NLP & Search
+                </div>
+                <h3 class="text-xl font-medium mb-3">Intelligent E-Library Platform</h3>
+                <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
+                    Developed a full-stack library management system incorporating natural language processing and semantic search capabilities to vastly improve user query relevancy and document retrieval.
+                </p>
+                <a href="#" class="text-sm font-medium hover:text-gray-300 transition-colors">View details &rarr;</a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="p-8 rounded-3xl bg-[#18181b] border border-white/5 hover:border-white/20 transition-colors">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs text-[#a1a1aa] mb-4">
+                    Predictive Modeling
+                </div>
+                <h3 class="text-xl font-medium mb-3">Real Estate Price Predictor</h3>
+                <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
+                    Built a robust regression model to forecast housing valuations based on localized features, automating data ingestion and providing interactive insights via web dashboards.
+                </p>
+                <a href="#" class="text-sm font-medium hover:text-gray-300 transition-colors">View details &rarr;</a>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="p-8 rounded-3xl bg-[#18181b] border border-white/5 hover:border-white/20 transition-colors">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs text-[#a1a1aa] mb-4">
+                    Classification
+                </div>
+                <h3 class="text-xl font-medium mb-3">Rainfall Classification System</h3>
+                <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
+                    Processed historical meteorological data using Pandas and NumPy to train a model capable of categorizing and predicting precipitation patterns with high statistical accuracy.
+                </p>
+                <a href="#" class="text-sm font-medium hover:text-gray-300 transition-colors">View details &rarr;</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
+        <h2 class="text-3xl font-semibold mb-8">Experience</h2>
+        <div class="max-w-2xl border-l border-white/10 pl-6 space-y-12">
+            <div>
+                <span class="text-xs text-[#a1a1aa] block mb-2">2023 &mdash; Present</span>
+                <h3 class="text-lg font-medium">Data Scientist</h3>
+                <p class="text-sm text-[#a1a1aa] mt-2">Developing end-to-end machine learning models and predictive analytics dashboards. Leading automated ETL workflows to ensure clean data delivery for web applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof / Certifications Section -->
+    <section id="proof" class="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
+        <h2 class="text-3xl font-semibold mb-8">Proof & Credentials</h2>
+        <p class="text-[#a1a1aa]">Repository of academic publications, model accuracy reports, and undergraduate thesis documentation for the intelligent e-library system.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="max-w-7xl mx-auto px-6 py-32 border-t border-white/5 text-center">
+        <h2 class="text-4xl font-semibold mb-6">Let's build together.</h2>
+        <p class="text-[#a1a1aa] mb-8 max-w-md mx-auto">Currently open to new opportunities, collaborations, and data-driven challenges.</p>
+        <a href="mailto:hello@example.com" class="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition-colors">
+            Send me an email
+        </a>
+    </section>
+
 </body>
 </html>
+
+```
