@@ -12,206 +12,447 @@
             color: #ffffff;
             font-family: 'Inter', sans-serif;
         }
-        /* Offset for fixed headers if you add one later, ensures scroll doesn't hide titles */
-        section { scroll-margin-top: 2rem; }
+        section { scroll-margin-top: 4rem; }
+        
+        /* Custom Animations for Icons */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+
+        /* Hide scrollbar for the horizontal proof section */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Accordion marker styling */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </details>
     </style>
 </head>
 <body class="min-h-screen antialiased selection:bg-white/20">
 
-    <!-- Navigation -->
-    <header class="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
+    <!-- Navigation: Links grouped closer to Contact Button -->
+    <header class="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between sticky top-0 bg-[#0c0c0e]/90 backdrop-blur-md z-50">
         <div class="flex items-center gap-3">
-            <img src="profile.jpg" alt="Adejobi Shalom" class="w-8 h-8 rounded-full object-cover border border-white/10">
+            <img src="profile.jpg" alt="Adejobi Shalom" class="w-8 h-8 rounded-full object-cover border border-white/10" onerror="this.src='https://ui-avatars.com/api/?name=Adejobi+Shalom&background=18181b&color=fff'">
             <span class="font-medium text-sm tracking-wide">Adejobi Shalom</span>
         </div>
         
-        <!-- Desktop Nav -->
-        <nav class="hidden md:flex items-center gap-8 text-sm text-[#a1a1aa]">
-            <a href="#skills" class="hover:text-white transition-colors">Skills</a>
-            <a href="#work" class="hover:text-white transition-colors">Work</a>
-            <a href="#experience" class="hover:text-white transition-colors">Experience</a>
-            <a href="#proof" class="hover:text-white transition-colors">Proof</a>
-        </nav>
-
-        <!-- Contact Button -->
-        <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
-            Contact me 
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        </a>
+        <!-- Grouped Nav and Contact -->
+        <div class="flex items-center gap-6">
+            <nav class="hidden md:flex items-center gap-6 text-sm text-[#a1a1aa]">
+                <a href="#tools" class="hover:text-white transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+                <a href="#proof" class="hover:text-white transition-colors">Proof</a>
+            </nav>
+            <a href="#contact" class="hidden md:inline-flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors">
+                Contact me 
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+        </div>
     </header>
 
     <!-- Hero Section -->
-    <main class="max-w-7xl mx-auto px-6 pt-12 md:pt-20 pb-32 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        
-        <!-- Left Content -->
+    <main class="max-w-7xl mx-auto px-6 pt-12 md:pt-16 pb-20 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         <div class="lg:col-span-7 flex flex-col items-start">
-            
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#18181b] border border-white/5 text-xs text-[#a1a1aa] mb-8">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Available for work &middot; Remote, contract or full-time</span>
             </div>
 
-            <h1 class="text-6xl sm:text-7xl lg:text-[80px] font-semibold tracking-tight leading-[1.05] mb-6">
+            <h1 class="text-5xl sm:text-7xl lg:text-[72px] font-semibold tracking-tight leading-[1.05] mb-6">
                 Data<br>Scientist.
             </h1>
 
             <p class="text-[#a1a1aa] text-lg leading-relaxed max-w-xl mb-10">
-                Hi, I'm Adejobi, a data scientist in Nigeria building AI-integrated systems for predictive analytics and decision-making. I take products from database architecture and ETL automation through to deployed machine learning models, working solo or leading a small team.
+                Detail-oriented data professional building predictive models, database architectures, and automated ETL workflows. Passionate about using actionable insights to solve real-world problems and drive measurable impact through evidence-based decisions.
             </p>
 
             <div class="flex flex-wrap items-center gap-4 mb-14">
-                <a href="#work" class="px-6 py-3 rounded-full bg-[#18181b] border border-white/5 text-sm font-medium hover:bg-[#27272a] transition-colors">
-                    See my work
+                <a href="#projects" class="px-6 py-3 rounded-full bg-[#18181b] border border-white/5 text-sm font-medium hover:bg-[#27272a] transition-colors">
+                    See my projects
                 </a>
-                <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors">
-                    Contact me 
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                <a href="CV.pdf" download class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors">
+                    Download CV 
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                 </a>
             </div>
 
-            <!-- Tech Stack Dock -->
+            <!-- Animated Tech Stack Dock (14 Icons) -->
             <div class="flex flex-wrap items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center">
-                    <span class="text-white font-bold text-xs bg-[#3776AB] px-1.5 py-0.5 rounded-sm">Py</span>
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center">
-                    <span class="text-white font-bold text-xs bg-[#F29111] px-1.5 py-0.5 rounded-sm">SQL</span>
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center text-[#38bdf8]">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center text-[#3ecf8e]">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center text-[#e11d48]">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v8l9-11h-7z"></path></svg>
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center text-[#61dafb]">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa]">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float" title="Python"><span class="text-xs font-bold text-[#3776AB]">Py</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-100" title="SQL"><span class="text-xs font-bold text-[#F29111]">SQL</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-200" title="Pandas"><span class="text-xs font-bold text-white">Pd</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-300" title="NumPy"><span class="text-xs font-bold text-[#4DABCF]">Nu</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-400" title="Scikit-Learn"><span class="text-xs font-bold text-[#F7931E]">Sk</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float" title="Excel"><span class="text-xs font-bold text-[#217346]">XL</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-100" title="Power BI"><span class="text-xs font-bold text-[#F2C811]">BI</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-200" title="JavaScript"><span class="text-xs font-bold text-[#F7DF1E]">JS</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-300" title="HTML"><span class="text-xs font-bold text-[#E34F26]">&lt;/&gt;</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-400" title="CSS"><span class="text-xs font-bold text-[#1572B6]">#</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float" title="Jupyter"><span class="text-xs font-bold text-[#F37626]">Jp</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-100" title="Colab"><span class="text-xs font-bold text-[#F9AB00]">Co</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-200" title="Git"><span class="text-xs font-bold text-[#F05032]">Git</span></div>
+                <div class="w-10 h-10 rounded-xl bg-[#18181b] border border-white/5 flex items-center justify-center animate-float delay-300" title="Machine Learning">
+                    <svg class="w-5 h-5 text-[#38bdf8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                 </div>
             </div>
         </div>
 
-        <!-- Right Content (Portrait Image Frame) -->
         <div class="lg:col-span-5 w-full">
-            <div class="w-full aspect-[4/5] rounded-[32px] overflow-hidden bg-[#18181b]">
-                <img src="profile.jpg" alt="Portrait" class="w-full h-full object-cover">
+            <div class="w-full aspect-[4/5] rounded-[32px] overflow-hidden bg-[#18181b] relative shadow-2xl shadow-black/50">
+                <img src="profile.jpg" alt="Portrait" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0c0c0e] via-transparent to-transparent opacity-60"></div>
             </div>
         </div>
     </main>
 
-    <!-- CONTENT SECTIONS -->
-    
-    <!-- Skills Section -->
-    <section id="skills" class="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
-        <h2 class="text-3xl font-semibold mb-8">Technical Core</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="p-6 rounded-2xl bg-[#18181b] border border-white/5">
-                <h3 class="font-medium mb-2">Languages</h3>
-                <p class="text-sm text-[#a1a1aa]">Python, JavaScript, HTML, CSS</p>
+    <!-- Tools Section -->
+    <section id="tools" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
+        <h2 class="text-3xl font-semibold mb-2">Tools I build with</h2>
+        <p class="text-[#a1a1aa] mb-12">The core stack driving my data workflows and analysis.</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            <!-- 14 Tools Grid -->
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#3776AB]">Py</span><span class="text-xs text-[#a1a1aa]">Python</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F29111]">SQL</span><span class="text-xs text-[#a1a1aa]">SQL</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-white">Pd</span><span class="text-xs text-[#a1a1aa]">Pandas</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#4DABCF]">Nu</span><span class="text-xs text-[#a1a1aa]">NumPy</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F7931E]">Sk</span><span class="text-xs text-[#a1a1aa]">Scikit-Learn</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#217346]">XL</span><span class="text-xs text-[#a1a1aa]">Adv. Excel</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F2C811]">BI</span><span class="text-xs text-[#a1a1aa]">Power BI</span></div>
+            
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F37626]">Jp</span><span class="text-xs text-[#a1a1aa]">Jupyter Lab</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F9AB00]">Co</span><span class="text-xs text-[#a1a1aa]">Google Colab</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F05032]">Git</span><span class="text-xs text-[#a1a1aa]">Git / GitHub</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#F7DF1E]">JS</span><span class="text-xs text-[#a1a1aa]">JavaScript</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition"><span class="text-2xl font-bold text-[#E34F26]">&lt;&gt;</span><span class="text-xs text-[#a1a1aa]">HTML/CSS</span></div>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition">
+                <svg class="w-8 h-8 text-[#38bdf8]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4"></path></svg>
+                <span class="text-xs text-[#a1a1aa]">Databases</span>
             </div>
-            <div class="p-6 rounded-2xl bg-[#18181b] border border-white/5">
-                <h3 class="font-medium mb-2">Libraries</h3>
-                <p class="text-sm text-[#a1a1aa]">Pandas, NumPy, Scikit-Learn, TfidfVectorizer</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-[#18181b] border border-white/5">
-                <h3 class="font-medium mb-2">Modeling</h3>
-                <p class="text-sm text-[#a1a1aa]">Regression, SVM, Random Forest</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-[#18181b] border border-white/5">
-                <h3 class="font-medium mb-2">Pipelines</h3>
-                <p class="text-sm text-[#a1a1aa]">ETL Automation, Semantic Search</p>
+            <div class="p-4 rounded-2xl bg-[#18181b] border border-white/5 flex flex-col items-center justify-center gap-3 hover:bg-[#27272a] transition">
+                <svg class="w-8 h-8 text-[#e11d48]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v8l9-11h-7z"></path></svg>
+                <span class="text-xs text-[#a1a1aa]">ETL Pipelines</span>
             </div>
         </div>
     </section>
 
-    <!-- Work/Projects Section -->
-    <section id="work" class="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
-        <h2 class="text-3xl font-semibold mb-8">Selected Work</h2>
-        <div class="grid md:grid-cols-2 gap-6">
+    <!-- Projects Section (Modeled after image_07bbd3.png)[cite: 5] -->
+    <section id="projects" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-semibold mb-4">Projects I've shipped</h2>
+            <p class="text-[#a1a1aa]">Complete systems, built end to end: data extraction, modeling, and deployment.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
             
             <!-- Project 1 -->
-            <div class="p-8 rounded-3xl bg-[#18181b] border border-white/5 hover:border-white/20 transition-colors">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs text-[#a1a1aa] mb-4">
-                    Machine Learning
+            <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
+                <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?fit=crop&w=800&q=80" alt="E-Library" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                    <div class="relative z-10 bg-[#0c0c0e]/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-sm">e-library-managements-ystem-2593.ai.studio</div>
                 </div>
-                <h3 class="text-xl font-medium mb-3">Card Fraud Detection System</h3>
-                <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
-                    Designed and deployed a highly accurate classification pipeline utilizing Support Vector Machines (SVM) and Random Forest to identify anomalous transaction patterns and prevent financial fraud.
-                </p>
-                <a href="#" class="text-sm font-medium hover:text-gray-300 transition-colors">View details &rarr;</a>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-medium mb-2">Intelligent E-Library System</h3>
+                    <p class="text-sm text-[#a1a1aa] mb-6">Undergraduate Thesis</p>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-8 flex-grow">
+                        Developed a machine-learning-powered research repository system designed to democratize access to academic resources. Built intelligent search and classification features to optimize resource allocation and document retrieval.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-emerald-500 mb-6">
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Machine Learning</span>
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Semantic Search</span>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/5 pt-6 mt-auto">
+                        <span class="text-xs text-[#a1a1aa]">Python &middot; Classification</span>
+                        <a href="https://e-library-managements-ystem-2593.ai.studio/" target="_blank" class="px-4 py-2 bg-white text-black text-xs font-medium rounded-full hover:bg-gray-200 transition">View Live</a>
+                    </div>
+                </div>
             </div>
 
             <!-- Project 2 -->
-            <div class="p-8 rounded-3xl bg-[#18181b] border border-white/5 hover:border-white/20 transition-colors">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs text-[#a1a1aa] mb-4">
-                    NLP & Search
+            <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
+                <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?fit=crop&w=800&q=80" alt="Fraud Detection" class="absolute inset-0 w-full h-full object-cover opacity-50">
                 </div>
-                <h3 class="text-xl font-medium mb-3">Intelligent E-Library Platform</h3>
-                <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
-                    Developed a full-stack library management system incorporating natural language processing and semantic search capabilities to vastly improve user query relevancy and document retrieval.
-                </p>
-                <a href="#" class="text-sm font-medium hover:text-gray-300 transition-colors">View details &rarr;</a>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-medium mb-2">Card Fraud Detection System</h3>
+                    <p class="text-sm text-[#a1a1aa] mb-6">Financial Security Analytics</p>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-8 flex-grow">
+                        Designed and deployed a highly accurate classification pipeline utilizing Support Vector Machines (SVM) and Random Forest to identify anomalous transaction patterns and prevent financial fraud in real-time.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-emerald-500 mb-6">
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> High Accuracy</span>
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Anomaly Detection</span>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/5 pt-6 mt-auto">
+                        <span class="text-xs text-[#a1a1aa]">Scikit-Learn &middot; SVM &middot; Random Forest</span>
+                        <a href="#" class="px-4 py-2 bg-[#27272a] text-white text-xs font-medium rounded-full hover:bg-white/20 transition">Source Code</a>
+                    </div>
+                </div>
             </div>
 
             <!-- Project 3 -->
-            <div class="p-8 rounded-3xl bg-[#18181b] border border-white/5 hover:border-white/20 transition-colors">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs text-[#a1a1aa] mb-4">
-                    Predictive Modeling
+            <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
+                <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?fit=crop&w=800&q=80" alt="Real Estate" class="absolute inset-0 w-full h-full object-cover opacity-50">
                 </div>
-                <h3 class="text-xl font-medium mb-3">Real Estate Price Predictor</h3>
-                <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
-                    Built a robust regression model to forecast housing valuations based on localized features, automating data ingestion and providing interactive insights via web dashboards.
-                </p>
-                <a href="#" class="text-sm font-medium hover:text-gray-300 transition-colors">View details &rarr;</a>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-medium mb-2">Real Estate Price Predictor</h3>
+                    <p class="text-sm text-[#a1a1aa] mb-6">Predictive Housing Analytics</p>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-8 flex-grow">
+                        End-to-end regression model built to forecast housing valuations. Cleaned, scaled, and analyzed structural features from raw real estate transactions, performing feature engineering and one-hot encoding for optimal convergence.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-emerald-500 mb-6">
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Regression Modeling</span>
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Feature Engineering</span>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/5 pt-6 mt-auto">
+                        <span class="text-xs text-[#a1a1aa]">Pandas &middot; Data Visualization</span>
+                        <a href="#" class="px-4 py-2 bg-[#27272a] text-white text-xs font-medium rounded-full hover:bg-white/20 transition">Source Code</a>
+                    </div>
+                </div>
             </div>
 
             <!-- Project 4 -->
-            <div class="p-8 rounded-3xl bg-[#18181b] border border-white/5 hover:border-white/20 transition-colors">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-xs text-[#a1a1aa] mb-4">
-                    Classification
+            <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
+                <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?fit=crop&w=800&q=80" alt="Rainfall" class="absolute inset-0 w-full h-full object-cover opacity-50">
                 </div>
-                <h3 class="text-xl font-medium mb-3">Rainfall Classification System</h3>
-                <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
-                    Processed historical meteorological data using Pandas and NumPy to train a model capable of categorizing and predicting precipitation patterns with high statistical accuracy.
-                </p>
-                <a href="#" class="text-sm font-medium hover:text-gray-300 transition-colors">View details &rarr;</a>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-medium mb-2">Rainfall Classification Model</h3>
+                    <p class="text-sm text-[#a1a1aa] mb-6">Meteorological Data Science</p>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-8 flex-grow">
+                        Processed historical meteorological data to train a classification model capable of categorizing and predicting precipitation patterns with high statistical accuracy, aiding in local agricultural planning.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-emerald-500 mb-6">
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Pattern Recognition</span>
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Data Cleaning</span>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/5 pt-6 mt-auto">
+                        <span class="text-xs text-[#a1a1aa]">Python &middot; NumPy &middot; Classification</span>
+                        <a href="#" class="px-4 py-2 bg-[#27272a] text-white text-xs font-medium rounded-full hover:bg-white/20 transition">Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
+                <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?fit=crop&w=800&q=80" alt="Customer Churn" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-medium mb-2">Customer Churn Prediction</h3>
+                    <p class="text-sm text-[#a1a1aa] mb-6">Business Intelligence Solutions</p>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-8 flex-grow">
+                        A Lucrative business-focused predictive pipeline analyzing user retention metrics to forecast churn probability, enabling proactive marketing interventions and revenue preservation for SaaS platforms.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-emerald-500 mb-6">
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Churn Analysis</span>
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Revenue Impact</span>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/5 pt-6 mt-auto">
+                        <span class="text-xs text-[#a1a1aa]">Power BI &middot; Logistic Regression</span>
+                        <a href="#" class="px-4 py-2 bg-[#27272a] text-white text-xs font-medium rounded-full hover:bg-white/20 transition">Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="rounded-3xl bg-[#151517] border border-white/5 overflow-hidden flex flex-col">
+                <div class="w-full aspect-video bg-[#1a1a1c] relative border-b border-white/5 p-4 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?fit=crop&w=800&q=80" alt="Algo Trading" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-medium mb-2">Algorithmic Trading Bot</h3>
+                    <p class="text-sm text-[#a1a1aa] mb-6">Quantitative Finance</p>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-8 flex-grow">
+                        Developed a quantitative trading script capable of analyzing historical market data and executing simulated buy/sell orders based on optimized moving average crossover strategies.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-emerald-500 mb-6">
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Time Series Analysis</span>
+                        <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Automation</span>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-white/5 pt-6 mt-auto">
+                        <span class="text-xs text-[#a1a1aa]">Python &middot; Finance APIs</span>
+                        <a href="#" class="px-4 py-2 bg-[#27272a] text-white text-xs font-medium rounded-full hover:bg-white/20 transition">Source Code</a>
+                    </div>
+                </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
-        <h2 class="text-3xl font-semibold mb-8">Experience</h2>
-        <div class="max-w-2xl border-l border-white/10 pl-6 space-y-12">
-            <div>
-                <span class="text-xs text-[#a1a1aa] block mb-2">2023 &mdash; Present</span>
-                <h3 class="text-lg font-medium">Data Scientist</h3>
-                <p class="text-sm text-[#a1a1aa] mt-2">Developing end-to-end machine learning models and predictive analytics dashboards. Leading automated ETL workflows to ensure clean data delivery for web applications.</p>
+    <!-- Experience Section (Modeled after image_07c02d.png)[cite: 6] -->
+    <section id="experience" class="max-w-4xl mx-auto px-6 py-20 border-t border-white/5">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-semibold mb-4">Where I've worked</h2>
+            <p class="text-[#a1a1aa]">Professional experience across analytics, automation, and data pipelines.</p>
+        </div>
+
+        <div class="space-y-4">
+            <!-- Experience 1 -->
+            <details class="group rounded-3xl bg-[#151517] border border-white/5 hover:border-white/20 transition-colors p-6 cursor-pointer" open>
+                <summary class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 outline-none">
+                    <div>
+                        <h3 class="text-xl font-medium text-white">Data Mining Intern</h3>
+                        <p class="text-sm text-[#a1a1aa] mt-1">GaoTek Inc.</p>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm text-[#a1a1aa] whitespace-nowrap">
+                        <span>Remote &middot; Aug 2025 – Present</span>
+                        <svg class="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </summary>
+                <div class="pt-6 mt-6 border-t border-white/5 text-[#a1a1aa] text-sm space-y-4 leading-relaxed">
+                    <ul class="list-disc pl-5 space-y-3">
+                        <li>Execute comprehensive data mining and extraction processes to optimize vast email databases, directly supporting targeted digital marketing campaigns.</li>
+                        <li>Analyze campaign performance metrics using Excel and Python, identifying key trends to improve engagement rates and operational efficiency.</li>
+                        <li>Clean, validate, and standardize lead generation data, ensuring high data quality and accuracy for continuous outreach initiatives.</li>
+                    </ul>
+                    <p class="text-xs pt-2">Stack: Python, Excel, Data Mining, ETL</p>
+                </div>
+            </details>
+
+            <!-- Experience 2 -->
+            <details class="group rounded-3xl bg-[#151517] border border-white/5 hover:border-white/20 transition-colors p-6 cursor-pointer">
+                <summary class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 outline-none">
+                    <div>
+                        <h3 class="text-xl font-medium text-white">Data Analytics & Software Trainee</h3>
+                        <p class="text-sm text-[#a1a1aa] mt-1">Ogun State Bureau of Statistics</p>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm text-[#a1a1aa] whitespace-nowrap">
+                        <span>Ogun State &middot; May 2025 – Sep 2025</span>
+                        <svg class="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </summary>
+                <div class="pt-6 mt-6 border-t border-white/5 text-[#a1a1aa] text-sm space-y-4 leading-relaxed">
+                    <ul class="list-disc pl-5 space-y-3">
+                        <li>Engineered and deployed custom Python scripts using OOP to automate ETL workflows, significantly reducing manual processing time for public sector datasets.</li>
+                        <li>Implemented rigorous data cleaning and validation procedures, ensuring high statistical integrity for state-level financial reporting.</li>
+                        <li>Designed and built interactive front-end dashboard interfaces using HTML, CSS, and JavaScript to streamline data dissemination.</li>
+                        <li>Utilized advanced Excel and Pandas functions to cross-verify extracted data tables prior to official statistical publishing.</li>
+                    </ul>
+                    <p class="text-xs pt-2">Stack: Python (OOP, Pandas), HTML/CSS/JS, Advanced Excel</p>
+                </div>
+            </details>
+
+            <!-- Experience 3 -->
+            <details class="group rounded-3xl bg-[#151517] border border-white/5 hover:border-white/20 transition-colors p-6 cursor-pointer">
+                <summary class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 outline-none">
+                    <div>
+                        <h3 class="text-xl font-medium text-white">Data Analytics Intern</h3>
+                        <p class="text-sm text-[#a1a1aa] mt-1">Leadresources</p>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm text-[#a1a1aa] whitespace-nowrap">
+                        <span>Ogun State &middot; Mar 2025 – Apr 2025</span>
+                        <svg class="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </summary>
+                <div class="pt-6 mt-6 border-t border-white/5 text-[#a1a1aa] text-sm space-y-4 leading-relaxed">
+                    <ul class="list-disc pl-5 space-y-3">
+                        <li>Conducted robust statistical analysis and processed complex financial datasets utilizing QuickBooks and SPSS to support consulting projects.</li>
+                        <li>Adapted technical analytical workflows to align with accounting-focused operations, ensuring precise data collation within deadlines.</li>
+                    </ul>
+                    <p class="text-xs pt-2">Stack: SPSS, QuickBooks, Statistical Analysis</p>
+                </div>
+            </details>
+        </div>
+        
+        <div class="mt-12 text-center">
+            <a href="CV.pdf" download class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors">
+                Download Full CV 
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Proof / On the Record Section (Modeled after image_07d2d3.png)[cite: 7] -->
+    <section id="proof" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-semibold mb-4">On the record</h2>
+            <p class="text-[#a1a1aa]">Academic achievements, certifications, and technical proficiencies. Every one is on my CV.</p>
+        </div>
+
+        <!-- Horizontal scroll container -->
+        <div class="flex overflow-x-auto gap-4 pb-8 no-scrollbar snap-x">
+            
+            <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">First Class Honours</strong> in Computer Science, demonstrating exceptional academic performance and technical understanding.</p>
+                <p class="text-xs text-[#52525b]">Chrisland University - 2026</p>
+            </div>
+
+            <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">IBM Data Science Professional</strong> Certificate, validating industry-standard competencies in data analysis and ML models.</p>
+                <p class="text-xs text-[#52525b]">Coursera - Certified</p>
+            </div>
+
+            <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Data Analysis with Python</strong> certification, focusing on advanced Pandas and data wrangling techniques.</p>
+                <p class="text-xs text-[#52525b]">UniAthena</p>
+            </div>
+
+            <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Professional Membership</strong> in view for both the Nigerian Computer Society (NCS) and CPN.</p>
+                <p class="text-xs text-[#52525b]">NCS & CPN</p>
+            </div>
+
+            <div class="min-w-[300px] md:min-w-[350px] p-6 rounded-3xl bg-[#151517] border border-white/5 flex flex-col justify-between snap-start hover:bg-[#1a1a1c] transition">
+                <p class="text-lg text-[#a1a1aa] leading-snug mb-6"><strong class="text-white">Automated ETL Workflows</strong> utilizing Object-Oriented Python to drastically cut manual public sector data processing.</p>
+                <p class="text-xs text-[#52525b]">Ogun State Bureau of Statistics</p>
             </div>
         </div>
     </section>
 
-    <!-- Proof / Certifications Section -->
-    <section id="proof" class="max-w-7xl mx-auto px-6 py-24 border-t border-white/5">
-        <h2 class="text-3xl font-semibold mb-8">Proof & Credentials</h2>
-        <p class="text-[#a1a1aa]">Repository of academic publications, model accuracy reports, and undergraduate thesis documentation for the intelligent e-library system.</p>
-    </section>
-
-    <!-- Contact Section -->
+    <!-- Comprehensive Contact Ending -->
     <section id="contact" class="max-w-7xl mx-auto px-6 py-32 border-t border-white/5 text-center">
-        <h2 class="text-4xl font-semibold mb-6">Let's build together.</h2>
-        <p class="text-[#a1a1aa] mb-8 max-w-md mx-auto">Currently open to new opportunities, collaborations, and data-driven challenges.</p>
-        <a href="mailto:hello@example.com" class="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition-colors">
-            Send me an email
-        </a>
+        <h2 class="text-5xl font-semibold mb-6">Let's build together.</h2>
+        <p class="text-lg text-[#a1a1aa] mb-12 max-w-2xl mx-auto">
+            Currently open to new opportunities, collaborations, and data-driven challenges. Connect with me across platforms or download my resume below.
+        </p>
+        
+        <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
+            <!-- Copy Email Button -->
+            <button onclick="navigator.clipboard.writeText('shalomadejobi@gmail.com'); alert('Email address copied to clipboard!');" class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-medium hover:bg-gray-200 transition-colors w-full md:w-auto justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                shalomadejobi@gmail.com
+                <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">Click to copy</span>
+            </button>
+            
+            <!-- Download CV -->
+            <a href="CV.pdf" download class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#18181b] border border-white/10 text-white font-medium hover:bg-[#27272a] transition-colors w-full md:w-auto justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download CV (PDF)
+            </a>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex items-center justify-center gap-6 border-t border-white/5 pt-12">
+            <a href="https://github.com/Shalomdex" target="_blank" class="w-12 h-12 rounded-full bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa] hover:text-white hover:border-white/20 transition-all" title="GitHub">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"></path></svg>
+            </a>
+            <a href="https://linkedin.com/in/shalom-dex-6318b42a6" target="_blank" class="w-12 h-12 rounded-full bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa] hover:text-white hover:border-white/20 transition-all" title="LinkedIn">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="mailto:shalomadejobi@gmail.com" class="w-12 h-12 rounded-full bg-[#18181b] border border-white/5 flex items-center justify-center text-[#a1a1aa] hover:text-white hover:border-white/20 transition-all" title="Email">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </a>
+        </div>
     </section>
 
 </body>
 </html>
-
-```
